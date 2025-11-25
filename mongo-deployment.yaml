@@ -21,9 +21,9 @@ spec:
           env:
             - name: MONGODB_ROOT_PASSWORD
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key: password
-                  name: mongodb-config
+                  name: mongodb-secret   
 
             - name: MONGODB_ROOT_USER
               valueFrom:
@@ -43,7 +43,7 @@ spec:
       volumes:
         - name: mongo-volume
           persistentVolumeClaim:
-            claimName: mongo-pvc-sc   
+            claimName: mongo-pvc-sc
 
         - name: mongo-config-test
           configMap:
